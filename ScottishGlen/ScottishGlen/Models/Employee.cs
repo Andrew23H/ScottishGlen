@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ScotishGlen.Models
+namespace ScottishGlen.Models
 {
     public class Employee
     {
