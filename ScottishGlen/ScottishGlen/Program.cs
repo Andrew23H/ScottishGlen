@@ -30,14 +30,20 @@ namespace ScottishGlen
 
             try
             {
-                dbContext.Database.CanConnect();
-                MessageBox.Show("Successful!!");
+                if (dbContext.Database.CanConnect())
+                {
+                    MessageBox.Show("Successful Connection!!");
+                }
+                else
+                {
+                    MessageBox.Show("Failed connection to database!");
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to connect: {ex.Message}");
-                Application.Run(new MainMenuForm());
+                MessageBox.Show($"Database connection failure: {ex.Message}");
             }
+            Application.Run(new MainMenuForm());
         }
     }
 }
