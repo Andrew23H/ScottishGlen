@@ -6,6 +6,7 @@ namespace ScottishGlen.DataAccess
     //This class will manage the database tables
     public class AssetTrackingContext : DbContext
     {
+        public AssetTrackingContext(DbContextOptions<AssetTrackingContext> options) : base(options) { }
         public DbSet<Asset> Assets { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Department> Departments { get; set; }
