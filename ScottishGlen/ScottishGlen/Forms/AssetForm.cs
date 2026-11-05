@@ -17,6 +17,9 @@ namespace ScottishGlen.Forms
             // get computers name
             systemNameTxt.Text = Environment.MachineName;
 
+            CollectAssetType();
+
+            // this will find the name of the Model and Manufacturer of the computer
             using (ManagementObjectSearcher searcher =
                 new ManagementObjectSearcher(
                     "SELECT Manufacturer, Model FROM Win32_ComputerSystem"))
@@ -53,9 +56,50 @@ namespace ScottishGlen.Forms
             }
         }
 
+        // this will show what the asset type they are using, https://learn.microsoft.com/en-gb/windows/win32/cimwin32prov/win32-systemenclosure
+        private void CollectAssetType()
+        {
+            using (ManagementObjectSearcher searcher = new ManagementObjectSearcher(
+                "SELECT ChassisTypes FROM Win32_SystemEnclosure"))
+            {
+                foreach (ManagementObject enclosure in searcher.Get())
+                {
+                    object chassisData = enclosure["ChassisTypes"];
+
+                    if (chassisData != null)
+                    {
+                        ushort[] chassisTypes = (ushort[])chassisData;
+
+                        foreach (ushort chassisType in chassisTypes)
+                        {
+                            string assetType = chassisType switch
+                            {
+                                3 or 4 or 5 or 6 or 7 => "Desktop",
+                                8 => "Portable",
+                                9 or 10 or 14 => "Laptop",
+                                13 => "All-in-One",
+                                30 or 31 or 32 => "Tablet",
+                                _ => "Other"
+                            };
+
+                            assetTypeTxt.Text = assetType;
+                            return;
+                        }
+                    }
+                }
+            }
+
+            assetTypeTxt.Text = "Unknown";
+        }
+
         private void BtnCollectHardware_Click(object sender, EventArgs e)
         {
             CollectHardwareInformation();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

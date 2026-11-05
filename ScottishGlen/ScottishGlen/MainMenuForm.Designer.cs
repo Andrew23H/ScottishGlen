@@ -30,6 +30,7 @@
         {
             AssetBtn = new Button();
             employeeBtn = new Button();
+            titleTxt = new TextBox();
             SuspendLayout();
             // 
             // AssetBtn
@@ -51,21 +52,32 @@
             employeeBtn.Text = "Manage Employees";
             employeeBtn.UseVisualStyleBackColor = true;
             // 
+            // titleTxt
+            // 
+            titleTxt.Location = new Point(315, 89);
+            titleTxt.Name = "titleTxt";
+            titleTxt.Size = new Size(157, 23);
+            titleTxt.TabIndex = 2;
+            titleTxt.Text = "ScottishGlen Asset Tracking";
+            // 
             // MainMenuForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(titleTxt);
             Controls.Add(employeeBtn);
             Controls.Add(AssetBtn);
             Name = "MainMenuForm";
             Text = "ScottishGlen Main Menu";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button AssetBtn;
         private Button employeeBtn;
+        private TextBox titleTxt;
     }
 }
