@@ -45,6 +45,7 @@
             notesTxt = new TextBox();
             employeeBox = new ComboBox();
             employeeLbl = new Label();
+            addAssetBtn = new Button();
             SuspendLayout();
             // 
             // BtnCollectHardware
@@ -196,11 +197,22 @@
             employeeLbl.TabIndex = 16;
             employeeLbl.Text = "Employee :";
             // 
+            // addAssetBtn
+            // 
+            addAssetBtn.Location = new Point(81, 116);
+            addAssetBtn.Name = "addAssetBtn";
+            addAssetBtn.Size = new Size(123, 23);
+            addAssetBtn.TabIndex = 17;
+            addAssetBtn.Text = "Add Asset";
+            addAssetBtn.UseVisualStyleBackColor = true;
+            addAssetBtn.Click += addAssetBtn_Click;
+            // 
             // AssetForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(addAssetBtn);
             Controls.Add(employeeLbl);
             Controls.Add(employeeBox);
             Controls.Add(notesTxt);
@@ -243,5 +255,6 @@
         private TextBox notesTxt;
         private ComboBox employeeBox;
         private Label employeeLbl;
+        private Button addAssetBtn;
     }
 }

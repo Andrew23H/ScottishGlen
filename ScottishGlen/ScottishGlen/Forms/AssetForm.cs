@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using Microsoft.EntityFrameworkCore;
 using ScottishGlen.DataAccess;
 using System.Linq;
+using ScottishGlen.Models;
 
 namespace ScottishGlen.Forms
 {
@@ -118,6 +119,60 @@ namespace ScottishGlen.Forms
 
         private void label1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void addAssetBtn_Click(object sender, EventArgs e)
+        {
+            // this will ensure an employee had been selected
+            if (employeeBox.SelectedValue == null)
+            {
+                MessageBox.Show(
+                    "Please select an employee.",
+                    "Missing Employee",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            // this will check that the automatic hardware collection fields are complete
+            if (string.IsNullOrWhiteSpace(systemNameTxt.Text) ||
+                string.IsNullOrWhiteSpace(manufacturerTxt.Text) ||
+                string.IsNullOrWhiteSpace(modelTxt.Text) ||
+                string.IsNullOrWhiteSpace(assetTypeTxt.Text) ||
+                string.IsNullOrWhiteSpace(ipAddressTxt.Text))
+            {
+                MessageBox.Show(
+                    "Some Hardware info is missing!",
+                    "Missing Info",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            // this will create the asset
+            var asset = new Asset
+            {
+                SystemName = systemNameTxt.Text,
+                Manufacturer = manufacturerTxt.Text,
+                Model = modelTxt.Text,
+                AssetType = assetTypeTxt.Text,
+                IpAddress = ipAddressTxt.Text,
+                PurchaseDate = purchasseDateDTP.Value,
+                Notes = notesTxt.Text,
+                EmployeeId = (int)employeeBox.SelectedValue
+
+            };
+
+            // this will save the asset to the database
+            using var dbContext = Program.CreateDbContext();
+            dbContext.Assets.Add(asset);
+            dbContext.SaveChanges();
+            MessageBox.Show(
+                $"Asset was added successfully! Asset ID: {asset.AssetId}",
+                "Asset saved",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information );
 
         }
     }
