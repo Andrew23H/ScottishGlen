@@ -30,12 +30,12 @@
         {
             AssetBtn = new Button();
             employeeBtn = new Button();
-            titleTxt = new TextBox();
+            titleTxt = new Label();
             SuspendLayout();
             // 
             // AssetBtn
             // 
-            AssetBtn.Location = new Point(253, 232);
+            AssetBtn.Location = new Point(236, 254);
             AssetBtn.Name = "AssetBtn";
             AssetBtn.Size = new Size(127, 23);
             AssetBtn.TabIndex = 0;
@@ -45,7 +45,7 @@
             // 
             // employeeBtn
             // 
-            employeeBtn.Location = new Point(428, 232);
+            employeeBtn.Location = new Point(459, 254);
             employeeBtn.Name = "employeeBtn";
             employeeBtn.Size = new Size(123, 23);
             employeeBtn.TabIndex = 1;
@@ -54,11 +54,13 @@
             // 
             // titleTxt
             // 
-            titleTxt.Location = new Point(315, 89);
+            titleTxt.Font = new Font("Segoe UI", 40F);
+            titleTxt.Location = new Point(162, 47);
             titleTxt.Name = "titleTxt";
-            titleTxt.Size = new Size(157, 23);
+            titleTxt.Size = new Size(488, 150);
             titleTxt.TabIndex = 2;
-            titleTxt.Text = "ScottishGlen Asset Tracking";
+            titleTxt.Text = "ScottishGlen Asset \r\n         Tracker";
+            titleTxt.Click += titleTxt_Click;
             // 
             // MainMenuForm
             // 
@@ -71,13 +73,12 @@
             Name = "MainMenuForm";
             Text = "ScottishGlen Main Menu";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Button AssetBtn;
         private Button employeeBtn;
-        private TextBox titleTxt;
+        private Label titleTxt;
     }
 }

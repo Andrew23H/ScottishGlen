@@ -39,13 +39,15 @@
             modelLbl = new Label();
             assetTypeLbl = new Label();
             ipAddressLbl = new Label();
-            purchasseDateDTP = new DateTimePicker();
+            purchaseDateDTP = new DateTimePicker();
             label1 = new Label();
             notesLbl = new Label();
             notesTxt = new TextBox();
             employeeBox = new ComboBox();
             employeeLbl = new Label();
             addAssetBtn = new Button();
+            cancelBtn = new Button();
+            viewAssetBtn = new Button();
             SuspendLayout();
             // 
             // BtnCollectHardware
@@ -143,29 +145,30 @@
             ipAddressLbl.TabIndex = 10;
             ipAddressLbl.Text = "IP Address :";
             // 
-            // purchasseDateDTP
+            // purchaseDateDTP
             // 
-            purchasseDateDTP.Format = DateTimePickerFormat.Short;
-            purchasseDateDTP.Location = new Point(318, 175);
-            purchasseDateDTP.Name = "purchasseDateDTP";
-            purchasseDateDTP.Size = new Size(207, 23);
-            purchasseDateDTP.TabIndex = 11;
-            purchasseDateDTP.Value = new DateTime(2026, 11, 5, 13, 51, 49, 0);
+            purchaseDateDTP.Format = DateTimePickerFormat.Short;
+            purchaseDateDTP.Location = new Point(318, 175);
+            purchaseDateDTP.Name = "purchaseDateDTP";
+            purchaseDateDTP.ShowCheckBox = true;
+            purchaseDateDTP.Size = new Size(207, 23);
+            purchaseDateDTP.TabIndex = 11;
+            purchaseDateDTP.Value = new DateTime(2026, 11, 5, 13, 51, 49, 0);
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(221, 175);
+            label1.Location = new Point(224, 175);
             label1.Name = "label1";
-            label1.Size = new Size(88, 30);
+            label1.Size = new Size(88, 45);
             label1.TabIndex = 12;
-            label1.Text = "Purchase Date :\r\n   (If known)";
+            label1.Text = "Purchase Date :\r\n     (Uncheck if \r\n       unknown)";
             label1.Click += label1_Click;
             // 
             // notesLbl
             // 
             notesLbl.AutoSize = true;
-            notesLbl.Location = new Point(265, 255);
+            notesLbl.Location = new Point(265, 269);
             notesLbl.Name = "notesLbl";
             notesLbl.Size = new Size(44, 15);
             notesLbl.TabIndex = 13;
@@ -173,7 +176,7 @@
             // 
             // notesTxt
             // 
-            notesTxt.Location = new Point(318, 255);
+            notesTxt.Location = new Point(318, 269);
             notesTxt.Multiline = true;
             notesTxt.Name = "notesTxt";
             notesTxt.Size = new Size(207, 99);
@@ -183,7 +186,7 @@
             // 
             employeeBox.DropDownStyle = ComboBoxStyle.DropDownList;
             employeeBox.FormattingEnabled = true;
-            employeeBox.Location = new Point(318, 209);
+            employeeBox.Location = new Point(318, 226);
             employeeBox.Name = "employeeBox";
             employeeBox.Size = new Size(207, 23);
             employeeBox.TabIndex = 15;
@@ -191,7 +194,7 @@
             // employeeLbl
             // 
             employeeLbl.AutoSize = true;
-            employeeLbl.Location = new Point(243, 212);
+            employeeLbl.Location = new Point(244, 226);
             employeeLbl.Name = "employeeLbl";
             employeeLbl.Size = new Size(65, 15);
             employeeLbl.TabIndex = 16;
@@ -207,18 +210,39 @@
             addAssetBtn.UseVisualStyleBackColor = true;
             addAssetBtn.Click += addAssetBtn_Click;
             // 
+            // cancelBtn
+            // 
+            cancelBtn.Location = new Point(81, 239);
+            cancelBtn.Name = "cancelBtn";
+            cancelBtn.Size = new Size(123, 23);
+            cancelBtn.TabIndex = 18;
+            cancelBtn.Text = "Cancel";
+            cancelBtn.UseVisualStyleBackColor = true;
+            cancelBtn.Click += cancelBtn_Click;
+            // 
+            // viewAssetBtn
+            // 
+            viewAssetBtn.Location = new Point(81, 177);
+            viewAssetBtn.Name = "viewAssetBtn";
+            viewAssetBtn.Size = new Size(123, 23);
+            viewAssetBtn.TabIndex = 19;
+            viewAssetBtn.Text = "View Assets";
+            viewAssetBtn.UseVisualStyleBackColor = true;
+            // 
             // AssetForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(viewAssetBtn);
+            Controls.Add(cancelBtn);
             Controls.Add(addAssetBtn);
             Controls.Add(employeeLbl);
             Controls.Add(employeeBox);
             Controls.Add(notesTxt);
             Controls.Add(notesLbl);
             Controls.Add(label1);
-            Controls.Add(purchasseDateDTP);
+            Controls.Add(purchaseDateDTP);
             Controls.Add(ipAddressLbl);
             Controls.Add(assetTypeLbl);
             Controls.Add(modelLbl);
@@ -249,12 +273,14 @@
         private Label modelLbl;
         private Label assetTypeLbl;
         private Label ipAddressLbl;
-        private DateTimePicker purchasseDateDTP;
+        private DateTimePicker purchaseDateDTP;
         private Label label1;
         private Label notesLbl;
         private TextBox notesTxt;
         private ComboBox employeeBox;
         private Label employeeLbl;
         private Button addAssetBtn;
+        private Button cancelBtn;
+        private Button viewAssetBtn;
     }
 }

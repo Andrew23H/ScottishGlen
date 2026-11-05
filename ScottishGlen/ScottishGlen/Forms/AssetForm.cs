@@ -158,7 +158,7 @@ namespace ScottishGlen.Forms
                 Model = modelTxt.Text,
                 AssetType = assetTypeTxt.Text,
                 IpAddress = ipAddressTxt.Text,
-                PurchaseDate = purchasseDateDTP.Value,
+                PurchaseDate = purchaseDateDTP.Checked ? purchaseDateDTP.Value : null,
                 Notes = notesTxt.Text,
                 EmployeeId = (int)employeeBox.SelectedValue
 
@@ -172,8 +172,14 @@ namespace ScottishGlen.Forms
                 $"Asset was added successfully! Asset ID: {asset.AssetId}",
                 "Asset saved",
                 MessageBoxButtons.OK,
-                MessageBoxIcon.Information );
+                MessageBoxIcon.Information);
 
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            // this will close the asset form and go back to the main form
+            this.Close();
         }
     }
 }
