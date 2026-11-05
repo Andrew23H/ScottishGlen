@@ -8,6 +8,25 @@ namespace ScottishGlen
 {
     internal static class Program
     {
+
+        // this will allow other Forms to use the database
+        internal static AssetTrackingContext CreateDbContext()
+        {
+            IConfiguration configuration = new ConfigurationBuilder()
+                .SetBasePath(AppContext.BaseDirectory)
+                .AddJsonFile("appsettings.json", optional: false)
+                .AddUserSecrets(typeof(Program).Assembly)
+                .Build();
+
+            string connectionString = configuration.GetConnectionString("DefaultConnection");
+
+            var options = new DbContextOptionsBuilder<AssetTrackingContext>()
+                .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+                .Options;
+
+          return new AssetTrackingContext(options); 
+
+        }
         
         [STAThread]
         static void Main()

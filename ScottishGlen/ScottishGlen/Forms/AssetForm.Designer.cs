@@ -43,6 +43,8 @@
             label1 = new Label();
             notesLbl = new Label();
             notesTxt = new TextBox();
+            employeeBox = new ComboBox();
+            employeeLbl = new Label();
             SuspendLayout();
             // 
             // BtnCollectHardware
@@ -58,7 +60,7 @@
             // systemNameLbl
             // 
             systemNameLbl.AutoSize = true;
-            systemNameLbl.Location = new Point(244, 58);
+            systemNameLbl.Location = new Point(223, 30);
             systemNameLbl.Name = "systemNameLbl";
             systemNameLbl.Size = new Size(86, 15);
             systemNameLbl.TabIndex = 1;
@@ -66,7 +68,7 @@
             // 
             // systemNameTxt
             // 
-            systemNameTxt.Location = new Point(339, 58);
+            systemNameTxt.Location = new Point(318, 30);
             systemNameTxt.Name = "systemNameTxt";
             systemNameTxt.ReadOnly = true;
             systemNameTxt.Size = new Size(207, 23);
@@ -75,7 +77,7 @@
             // maufacturerLbl
             // 
             maufacturerLbl.AutoSize = true;
-            maufacturerLbl.Location = new Point(244, 98);
+            maufacturerLbl.Location = new Point(224, 59);
             maufacturerLbl.Name = "maufacturerLbl";
             maufacturerLbl.Size = new Size(85, 15);
             maufacturerLbl.TabIndex = 3;
@@ -83,7 +85,7 @@
             // 
             // manufacturerTxt
             // 
-            manufacturerTxt.Location = new Point(339, 98);
+            manufacturerTxt.Location = new Point(318, 59);
             manufacturerTxt.Name = "manufacturerTxt";
             manufacturerTxt.ReadOnly = true;
             manufacturerTxt.Size = new Size(207, 23);
@@ -91,7 +93,7 @@
             // 
             // modelTxt
             // 
-            modelTxt.Location = new Point(339, 137);
+            modelTxt.Location = new Point(318, 88);
             modelTxt.Name = "modelTxt";
             modelTxt.ReadOnly = true;
             modelTxt.Size = new Size(207, 23);
@@ -99,7 +101,7 @@
             // 
             // assetTypeTxt
             // 
-            assetTypeTxt.Location = new Point(339, 178);
+            assetTypeTxt.Location = new Point(318, 117);
             assetTypeTxt.Name = "assetTypeTxt";
             assetTypeTxt.ReadOnly = true;
             assetTypeTxt.Size = new Size(207, 23);
@@ -107,7 +109,7 @@
             // 
             // ipAddressTxt
             // 
-            ipAddressTxt.Location = new Point(339, 219);
+            ipAddressTxt.Location = new Point(318, 146);
             ipAddressTxt.Name = "ipAddressTxt";
             ipAddressTxt.ReadOnly = true;
             ipAddressTxt.Size = new Size(207, 23);
@@ -116,7 +118,7 @@
             // modelLbl
             // 
             modelLbl.AutoSize = true;
-            modelLbl.Location = new Point(282, 137);
+            modelLbl.Location = new Point(261, 88);
             modelLbl.Name = "modelLbl";
             modelLbl.Size = new Size(47, 15);
             modelLbl.TabIndex = 8;
@@ -125,7 +127,7 @@
             // assetTypeLbl
             // 
             assetTypeLbl.AutoSize = true;
-            assetTypeLbl.Location = new Point(258, 178);
+            assetTypeLbl.Location = new Point(241, 117);
             assetTypeLbl.Name = "assetTypeLbl";
             assetTypeLbl.Size = new Size(71, 15);
             assetTypeLbl.TabIndex = 9;
@@ -134,7 +136,7 @@
             // ipAddressLbl
             // 
             ipAddressLbl.AutoSize = true;
-            ipAddressLbl.Location = new Point(258, 219);
+            ipAddressLbl.Location = new Point(241, 146);
             ipAddressLbl.Name = "ipAddressLbl";
             ipAddressLbl.Size = new Size(68, 15);
             ipAddressLbl.TabIndex = 10;
@@ -143,7 +145,7 @@
             // purchasseDateDTP
             // 
             purchasseDateDTP.Format = DateTimePickerFormat.Short;
-            purchasseDateDTP.Location = new Point(339, 262);
+            purchasseDateDTP.Location = new Point(318, 175);
             purchasseDateDTP.Name = "purchasseDateDTP";
             purchasseDateDTP.Size = new Size(207, 23);
             purchasseDateDTP.TabIndex = 11;
@@ -152,7 +154,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(241, 262);
+            label1.Location = new Point(221, 175);
             label1.Name = "label1";
             label1.Size = new Size(88, 30);
             label1.TabIndex = 12;
@@ -162,7 +164,7 @@
             // notesLbl
             // 
             notesLbl.AutoSize = true;
-            notesLbl.Location = new Point(282, 308);
+            notesLbl.Location = new Point(265, 255);
             notesLbl.Name = "notesLbl";
             notesLbl.Size = new Size(44, 15);
             notesLbl.TabIndex = 13;
@@ -170,17 +172,37 @@
             // 
             // notesTxt
             // 
-            notesTxt.Location = new Point(339, 308);
+            notesTxt.Location = new Point(318, 255);
             notesTxt.Multiline = true;
             notesTxt.Name = "notesTxt";
             notesTxt.Size = new Size(207, 99);
             notesTxt.TabIndex = 14;
+            // 
+            // employeeBox
+            // 
+            employeeBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            employeeBox.FormattingEnabled = true;
+            employeeBox.Location = new Point(318, 209);
+            employeeBox.Name = "employeeBox";
+            employeeBox.Size = new Size(207, 23);
+            employeeBox.TabIndex = 15;
+            // 
+            // employeeLbl
+            // 
+            employeeLbl.AutoSize = true;
+            employeeLbl.Location = new Point(243, 212);
+            employeeLbl.Name = "employeeLbl";
+            employeeLbl.Size = new Size(65, 15);
+            employeeLbl.TabIndex = 16;
+            employeeLbl.Text = "Employee :";
             // 
             // AssetForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(employeeLbl);
+            Controls.Add(employeeBox);
             Controls.Add(notesTxt);
             Controls.Add(notesLbl);
             Controls.Add(label1);
@@ -219,5 +241,7 @@
         private Label label1;
         private Label notesLbl;
         private TextBox notesTxt;
+        private ComboBox employeeBox;
+        private Label employeeLbl;
     }
 }

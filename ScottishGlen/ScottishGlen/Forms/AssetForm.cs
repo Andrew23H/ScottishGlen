@@ -1,6 +1,9 @@
 ﻿using System.Management;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using Microsoft.EntityFrameworkCore;
+using ScottishGlen.DataAccess;
+using System.Linq;
 
 namespace ScottishGlen.Forms
 {
@@ -9,6 +12,22 @@ namespace ScottishGlen.Forms
         public AssetForm()
         {
             InitializeComponent();
+            LoadEmployee();
+        }
+
+        // this will load emplyees from the databasae
+        private void LoadEmployee()
+        {
+            using var dbContext = Program.CreateDbContext();
+            var employees = dbContext.Employees
+                .OrderBy(e => e.FirstName)
+                .ThenBy(e => e.LastName)
+                .ToList();
+
+            employeeBox.DataSource = employees;
+            employeeBox.DisplayMember = "FullName";
+            employeeBox.ValueMember = "EmployeeId";
+            employeeBox.SelectedIndex = -1;
         }
 
         // this will collect the manufacturer and model of the computer.
