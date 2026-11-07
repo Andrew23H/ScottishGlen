@@ -41,7 +41,7 @@
             AssetBtn.TabIndex = 0;
             AssetBtn.Text = "Add / View Assets";
             AssetBtn.UseVisualStyleBackColor = true;
-            AssetBtn.Click += button1_Click;
+            AssetBtn.Click += assetBtn_Click;
             // 
             // employeeBtn
             // 

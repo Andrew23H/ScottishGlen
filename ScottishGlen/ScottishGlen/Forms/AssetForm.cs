@@ -6,6 +6,7 @@ using ScottishGlen.DataAccess;
 using System.Linq;
 using ScottishGlen.Models;
 
+
 namespace ScottishGlen.Forms
 {
     public partial class AssetForm : Form
@@ -174,6 +175,12 @@ namespace ScottishGlen.Forms
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
 
+        }
+
+        private void viewAssetsBtn_Click(object sender, EventArgs e)
+        {
+            ViewAssetsForm ViewAssetsForm = new ViewAssetsForm();
+            ViewAssetsForm.ShowDialog();
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)

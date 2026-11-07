@@ -47,7 +47,7 @@
             employeeLbl = new Label();
             addAssetBtn = new Button();
             cancelBtn = new Button();
-            viewAssetBtn = new Button();
+            viewAssetsBtn = new Button();
             SuspendLayout();
             // 
             // BtnCollectHardware
@@ -220,21 +220,22 @@
             cancelBtn.UseVisualStyleBackColor = true;
             cancelBtn.Click += cancelBtn_Click;
             // 
-            // viewAssetBtn
+            // viewAssetsBtn
             // 
-            viewAssetBtn.Location = new Point(81, 177);
-            viewAssetBtn.Name = "viewAssetBtn";
-            viewAssetBtn.Size = new Size(123, 23);
-            viewAssetBtn.TabIndex = 19;
-            viewAssetBtn.Text = "View Assets";
-            viewAssetBtn.UseVisualStyleBackColor = true;
+            viewAssetsBtn.Location = new Point(81, 177);
+            viewAssetsBtn.Name = "viewAssetsBtn";
+            viewAssetsBtn.Size = new Size(123, 23);
+            viewAssetsBtn.TabIndex = 19;
+            viewAssetsBtn.Text = "View Assets";
+            viewAssetsBtn.UseVisualStyleBackColor = true;
+            viewAssetsBtn.Click += viewAssetsBtn_Click;
             // 
             // AssetForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(viewAssetBtn);
+            Controls.Add(viewAssetsBtn);
             Controls.Add(cancelBtn);
             Controls.Add(addAssetBtn);
             Controls.Add(employeeLbl);
@@ -281,6 +282,6 @@
         private Label employeeLbl;
         private Button addAssetBtn;
         private Button cancelBtn;
-        private Button viewAssetBtn;
+        private Button viewAssetsBtn;
     }
 }
