@@ -2,8 +2,9 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-// this was created as EF core nneds a way to create database context when it is genberating migrations
-
+// this was created as EF core needs a way to create database context when it is genberating migrations
+//https://learn.microsoft.com/en-us/ef/core/cli/dbcontext-creation?tabs=vs, https://stackoverflow.com/questions/77260339/entity-framework-core-unable-to-create-dbcontext-object-at-design-time
+// this uses the json file connectionstring to connect to the database
 namespace ScottishGlen.DataAccess
 {
     public class AssetTrackingContextFactory

@@ -18,15 +18,14 @@ namespace ScottishGlen.DataAccess
             modelBuilder.Entity<Employee>().ToTable("CMP307_ScottishGlenEmployees");
             modelBuilder.Entity<Department>().ToTable("CMP307_ScottishGlenDepartments");
 
-            //https://learn.microsoft.com/en-us/ef/core/modeling/relationships/one-to-many
-            // was used for this.
-            // employees can have multiple assets
+            //https://learn.microsoft.com/en-us/ef/core/modeling/relationships/one-to-many was used for this.
+            // an employee can have multiple assets
             modelBuilder.Entity<Asset>()
                 .HasOne<Employee>()
                 .WithMany()
                 .HasForeignKey(a => a.EmployeeId);
 
-            // department can have multiple employees
+            // a department can have multiple employees
             modelBuilder.Entity<Employee>()
                 .HasOne<Department>()
                 .WithMany()

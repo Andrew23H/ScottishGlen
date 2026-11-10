@@ -15,10 +15,7 @@ public partial class MainMenuForm : Form
         assetForm.ShowDialog();
     }
 
-    private void titleTxt_Click(object sender, EventArgs e)
-    {
-        titleTxt.Font = new Font(titleTxt.Font.Name, 40, titleTxt.Font.Style);
-    }
+    
 
     
 }

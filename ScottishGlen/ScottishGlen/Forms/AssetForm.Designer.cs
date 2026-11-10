@@ -163,7 +163,7 @@
             label1.Size = new Size(88, 45);
             label1.TabIndex = 12;
             label1.Text = "Purchase Date :\r\n     (Uncheck if \r\n       unknown)";
-            label1.Click += label1_Click;
+            
             // 
             // notesLbl
             // 

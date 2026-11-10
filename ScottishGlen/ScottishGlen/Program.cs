@@ -34,7 +34,8 @@ namespace ScottishGlen
         {
             ApplicationConfiguration.Initialize();
 
-            // This will load the database configuration from appsettings.json
+            // This will load the database configuration from appsettings.json,
+            // The credentials are stored seperately in User Secrets
             IConfiguration configuration = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -43,7 +44,7 @@ namespace ScottishGlen
             // This will get the database connection string
             string connectionString = configuration.GetConnectionString("DefaultConnection");
 
-            // This will configure entity framework core to use MySQL
+            // This will configure entity framework core to use  pomelo MySQL
             var options = new DbContextOptionsBuilder<AssetTrackingContext>()
                 .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)).Options;
             using var dbContext = new AssetTrackingContext(options);

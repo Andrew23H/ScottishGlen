@@ -11,10 +11,11 @@ namespace ScottishGlen.Forms
             InitializeComponent();
         }
 
-        // this will load and display all the assets stored on the database, it joins assets with employess to show the employees fill name
+        // this will load and display all the assets stored on the database, it joins assets with employess to show the employees full name
         private void LoadAssets()
         {
             using var dbContext = Program.CreateDbContext();
+            // this joinsassets and employess using their ID foreign key
             var assets = dbContext.Assets.Join(dbContext.Employees, asset => asset.EmployeeId, employee => employee.EmployeeId,
                 (asset, employee) => new
                 {

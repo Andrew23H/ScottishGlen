@@ -60,7 +60,7 @@
             titleTxt.Size = new Size(488, 150);
             titleTxt.TabIndex = 2;
             titleTxt.Text = "ScottishGlen Asset \r\n         Tracker";
-            titleTxt.Click += titleTxt_Click;
+            
             // 
             // MainMenuForm
             // 

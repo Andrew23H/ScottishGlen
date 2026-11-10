@@ -17,7 +17,7 @@ namespace ScottishGlen.Forms
             LoadEmployee();
         }
 
-        // this will load emplyees from the databasae
+        // this will load emplyees from the database and display their full name
         private void LoadEmployee()
         {
             using var dbContext = Program.CreateDbContext();
@@ -32,7 +32,7 @@ namespace ScottishGlen.Forms
             employeeBox.SelectedIndex = -1;
         }
 
-        // this will collect the manufacturer and model of the computer.
+        // this will collect the hardware information of the current computer.
         private void CollectHardwareInformation()
         {
             // get computers name
@@ -77,7 +77,7 @@ namespace ScottishGlen.Forms
             }
         }
 
-        // this will show what the asset type they are using, https://learn.microsoft.com/en-gb/windows/win32/cimwin32prov/win32-systemenclosure
+        // this uses the chassis type to determine what asset type it will be https://stackoverflow.com/questions/34707746/managementobjectsearcher-on-wmi-array-property
         private void CollectAssetType()
         {
             using (ManagementObjectSearcher searcher = new ManagementObjectSearcher(
@@ -87,6 +87,7 @@ namespace ScottishGlen.Forms
                 {
                     object chassisData = enclosure["ChassisTypes"];
 
+                    // this number ID represents the chassistype https://learn.microsoft.com/en-gb/windows/win32/cimwin32prov/win32-systemenclosure
                     if (chassisData != null)
                     {
                         ushort[] chassisTypes = (ushort[])chassisData;
@@ -118,14 +119,14 @@ namespace ScottishGlen.Forms
             CollectHardwareInformation();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+        //private void label1_Click(object sender, EventArgs e)
+        //{
 
-        }
+        //}
 
         private void addAssetBtn_Click(object sender, EventArgs e)
         {
-            // this will ensure an employee had been selected
+            // this will check that an employee had been selected before adding the asset to database
             if (employeeBox.SelectedValue == null)
             {
                 MessageBox.Show(
@@ -144,14 +145,16 @@ namespace ScottishGlen.Forms
                 string.IsNullOrWhiteSpace(ipAddressTxt.Text))
             {
                 MessageBox.Show(
-                    "Some Hardware info is missing!",
+                    "Hardware info is missing!\n" +
+                    "Click 'Collect Hardware'",
+
                     "Missing Info",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
                 return;
             }
 
-            // this will create the asset
+            // this will create the asset object using the collected hardware ionformation
             var asset = new Asset
             {
                 SystemName = systemNameTxt.Text,
@@ -165,7 +168,7 @@ namespace ScottishGlen.Forms
 
             };
 
-            // this will save the asset to the database
+            // this will add the asset to the database and save, the database will generate an ID for the asset
             using var dbContext = Program.CreateDbContext();
             dbContext.Assets.Add(asset);
             dbContext.SaveChanges();
